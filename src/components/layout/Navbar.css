@@ -1,0 +1,134 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: all var(--transition-normal);
+  background: transparent;
+}
+
+.navbar.scrolled {
+  padding: 1rem 0;
+  background: rgba(var(--bg-primary-rgb, 255, 255, 255), 0.85); /* fallback */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Need to define an rgb variable or just use the color var if it works. 
+Wait, rgba(var(--bg-primary), 0.85) doesn't work unless bg-primary is RGB values.
+Let's just use var(--bg-primary) and rely on the backdrop filter, or add an opacity color.
+Actually, better is to use a new variable or just solid with some transparency if possible. 
+Let's use a solid background for scrolled since we changed the color system, or stick to the hex var. */
+[data-theme="dark"] .navbar.scrolled {
+  background: rgba(11, 17, 32, 0.85);
+}
+[data-theme="light"] .navbar.scrolled,
+.navbar.scrolled {
+  background: rgba(248, 249, 250, 0.85);
+}
+
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--transition-fast);
+}
+
+.logo-circle:hover {
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.logo-circle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left var(--transition-slow);
+}
+
+.logo-circle:hover::after {
+  left: 100%;
+}
+
+.logo-letter {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.desktop-nav {
+  display: none;
+}
+
+.mobile-toggle {
+  display: flex;
+  color: var(--text-primary);
+  padding: 0.5rem;
+  z-index: 1001;
+  transition: color var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-toggle:hover {
+  color: var(--accent-primary);
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex;
+  }
+  .mobile-toggle {
+    display: none;
+  }
+}
