@@ -5,18 +5,26 @@ import './ThemeToggle.css';
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
     <button
-      className="theme-toggle"
+      className={`theme-toggle-switch ${isDark ? 'dark' : 'light'}`}
       onClick={toggleTheme}
-      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      type="button"
     >
-      <div className={`theme-toggle-icon ${theme === 'light' ? 'show-sun' : 'show-moon'}`}>
-        <Sun className="icon-sun" size={20} />
-        <Moon className="icon-moon" size={20} />
+      <div className="theme-switch-track">
+        <div className="theme-switch-thumb">
+          {isDark ? (
+            <Moon className="switch-icon moon" size={14} />
+          ) : (
+            <Sun className="switch-icon sun" size={14} />
+          )}
+        </div>
       </div>
+      <span className="theme-switch-text">{isDark ? 'Dark' : 'Light'}</span>
     </button>
   );
 };

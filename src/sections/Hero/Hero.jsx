@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../../components/ui/Button';
-import { ArrowRight, Code2, Smartphone, Terminal } from 'lucide-react';
+import { ArrowRight, Code2, Smartphone, Terminal, Sparkles } from 'lucide-react';
 import './Hero.css';
 
 const Hero = () => {
@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-badge">
             <span className="badge-dot"></span>
-            Ermias Adane, Software Developer
+            <span>Available for New Projects · Software Developer</span>
           </div>
           
           <h1 className="hero-title">
@@ -23,7 +23,7 @@ const Hero = () => {
           </h1>
           
           <p className="hero-subtitle">
-            Specializing in modern Web Development, high-performance App Development, and crafting Premium Digital Tools that empower businesses to scale.
+            Specializing in modern Web Development, high-performance Mobile Applications, and custom digital tools engineered for reliability and impact.
           </p>
           
           <div className="hero-cta-group">
